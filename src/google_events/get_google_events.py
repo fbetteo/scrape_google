@@ -3,6 +3,9 @@ import src.google_events.scrape_events_utils as utils
 
 # https://www.google.com/search?q=events+in+Buenos+Aires&gl=us&hl=en&ibp=htl;events
 
+# Currently running here. Just change the city. 
+# We can make this a script to run with city as a parameter
+# We can modify the quuery to include only the next month or things like that , although big events in the future seem useful.
 
 city = "Buenos Aires"
 
@@ -38,9 +41,10 @@ final_df = pd.DataFrame(
         "month": event_month,
         "img": event_img,
         "search_importance": search_importance,
+        "query_date": pd.Timestamp("today").strftime("%Y-%m-%d"),
     }
 )
 
 final_df
 
-final_df.to_csv("events_buenosaires.csv", index=False)
+final_df.to_csv(f"events_{city.lower().replace(" ", "")}.csv", index=False)

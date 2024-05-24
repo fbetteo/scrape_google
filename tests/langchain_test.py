@@ -1,6 +1,11 @@
 from langchain_community.document_loaders import AsyncChromiumLoader
 from langchain_community.document_transformers import BeautifulSoupTransformer
 
+#### Initial exploration to see if langchain could be useful. Based on the official documentation.
+# --> I think langchain scraping tools are useful for static sites primarily and not for dynamic sites like Google Flights. (Scrape the wiki for example.)
+# No need for langchain and LLM in this case since we already have how to extract and parse the data. No need to figure out text.
+
+
 # Load HTML
 loader = AsyncChromiumLoader(
     [
