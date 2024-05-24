@@ -33,7 +33,15 @@ def ScrapeObjects(objs, deep_copy=False):
         objs = [objs]
 
     chromedriver_autoinstaller.install()  # check if chromedriver is installed correctly and on path
-    driver = webdriver.Chrome()
+    options = webdriver.ChromeOptions()
+    options.add_experimental_option(
+        "prefs",
+        {
+            # block image loading
+            "profile.managed_default_content_settings.images": 2,
+        },
+    )
+    driver = webdriver.Chrome(options=options)
     driver.maximize_window()
 
     # modifies the objects in-place
